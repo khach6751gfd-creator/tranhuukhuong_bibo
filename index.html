@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tư Dinh Họ Trần - Bạc Liêu (1932)</title>
+    <style>
+        :root {
+            --bg-color: #f4ecd8;
+            --chat-bg: #fbf6ea;
+            --primary: #5c3a21;
+            --secondary: #8c5a32;
+            --text-color: #2b1b0e;
+            --user-bubble: #e6d5b8;
+            --bot-bubble: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Georgia', serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; height: 100vh; max-width: 700px; margin: 0 auto; border-left: 1px solid #d4c4a8; border-right: 1px solid #d4c4a8; }
+        
+        /* TRANG BÌA (COVER SCREEN) */
+        #cover-screen { flex: 1; overflow-y: auto; padding: 20px 16px; background: var(--chat-bg); display: flex; flex-direction: column; gap: 14px; }
+        .cover-header { text-align: center; border-bottom: 1px solid #d4c4a8; padding-bottom: 12px; }
+        .badge { display: inline-block; background: var(--primary); color: #f4ecd8; font-size: 0.72rem; padding: 4px 10px; border-radius: 12px; letter-spacing: 1px; margin-bottom: 6px; }
+        .cover-header h1 { font-size: 1.35rem; color: var(--primary); margin-bottom: 4px; }
+        .cover-header p { font-size: 0.85rem; color: var(--secondary); font-style: italic; }
+        
+        .lore-box { background: #fffdf9; border: 1px solid #d4c4a8; border-radius: 8px; padding: 12px; max-height: 220px; overflow-y: auto; font-size: 0.88rem; line-height: 1.55; }
+        .lore-box h3 { color: var(--primary); font-size: 0.95rem; margin-bottom: 6px; border-bottom: 1px dashed #d4c4a8; padding-bottom: 4px; }
+        .lore-box p { margin-bottom: 8px; }
+
+        .setup-box { background: #f4ecd8; border: 1px solid #cbb898; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+        .setup-box label { font-size: 0.82rem; font-weight: bold; color: var(--primary); }
+        .setup-box input { width: 100%; padding: 8px 10px; border: 1px solid #bba88a; border-radius: 5px; font-size: 0.9rem; background: #fffdf9; outline: none; }
+        .start-btn { background: var(--primary); color: #f4ecd8; border: none; padding: 12px; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 4px; }
+        .start-btn:hover { opacity: 0.92; }
+
+        /* MÀN HÌNH CHAT */
+        #chat-screen { display: none; flex-direction: column; height: 100vh; }
+        header { background-color: var(--primary); color: #f4ecd8; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+        header h2 { font-size: 0.98rem; }
+        header p { font-size: 0.72rem; opacity: 0.85; font-style: italic; }
+        .btn-group { display: flex; gap: 4px; flex-shrink: 0; }
+        .btn-group button { background: var(--secondary); color: #fff; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; }
+        #chat-box { flex: 1; overflow-y: auto; padding: 14px; background-color: var(--chat-bg); display: flex; flex-direction: column; gap: 12px; }
+        .msg { max-width: 94%; padding: 12px 14px; border-radius: 8px; line-height: 1.6; font-size: 0.93rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); white-space: pre-wrap; }
+        .bot-msg { background-color: var(--bot-bubble); align-self: flex-start; border-left: 3px solid var(--primary); }
+        .user-msg { background-color: var(--user-bubble); align-self: flex-end; border-right: 3px solid var(--secondary); }
+        .bot-msg em { color: #6e5541; font-style: italic; }
+        .bot-msg strong { color: #4a2508; }
+        .input-area { padding: 8px 10px; background: var(--bg-color); border-top: 1px solid #d4c4a8; display: flex; gap: 6px; }
+        .input-area textarea { flex: 1; padding: 8px; border: 1px solid #bba88a; border-radius: 6px; resize: none; height: 46px; font-size: 0.92rem; background: #fffdf9; outline: none; }
+        #send-btn { background: var(--primary); color: #f4ecd8; border: none; padding: 0 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        #send-btn:disabled { opacity: 0.5; }
+    </style>
+</head>
+<body>
+
+<div id="cover-screen">
+    <div class="cover-header">
+        <span class="badge">BẠC LIÊU • NĂM 1932 (NHÂM THÂN)</span>
+        <h1>Trần Hữu Khương & Trần Anh Tuấn</h1>
+        <p>Cậu Hai Tây Học & Cậu Ba Miệt Vườn</p>
+    </div>
+
+    <div class="lore-box">
+        <h3>📜 Thông tin công khai & Lịch sử (1932)</h3>
+        <p><strong>Gia thế nhà Hội đồng Trần (hạt Vĩnh Lợi, Bạc Liêu):</strong> Dòng họ đại điền chủ quyền thế bậc nhất vùng lục tỉnh Nam Kỳ. Ông Hội đồng Trần (50 tuổi) là nghị viên Hội đồng Quản hạt, nắm giữ hàng ngàn mẫu ruộng đất. Bà Hội đồng kế (45 tuổi) sắc sảo, mặn mà, chuyên quản lý chi tiêu tư dinh và ngầm cho tá điền vay bạc góp.</p>
+        <p><strong>Cậu Hai Trần Hữu Khương (27 tuổi):</strong> Con trai vợ cả đã khuất. Du học Pháp ngành Kinh tế – Thương mại về, hiện làm chủ hãng buôn lúa gạo xuất khẩu và đồn điền cao su trên Sài Gòn – Chợ Lớn. Cao 1m85, vạm vỡ, lạnh lùng uy quyền, luôn mang gậy ba toong gỗ mun và lái xe hơi Citroën.</p>
+        <p><strong>Cậu Ba Trần Anh Tuấn (20 tuổi):</strong> Em trai cùng cha khác mẹ của Khương, con ruột bà Hội đồng kế. Tốt nghiệp bằng Thành chung trường tỉnh, ở quê Bạc Liêu phụ cha quản lý sổ sách lúa tô và nhà máy xay xát gạo. Cao 1m78, thư sinh ấm áp, đi xe đạp Peugeot.</p>
+        <p><strong>Thân phận của bạn (18 tuổi):</strong> Gia đình mất sớm, được nhà họ Trần nhận nuôi từ năm lên 4. Lớn lên bên cậu Ba Tuấn như thanh mai trúc mã trong sáng và đang được Tuấn xin cha cưới làm vợ lẽ. Tuy nhiên, ký ức kinh hoàng năm 13 tuổi khiến bạn luôn khiếp sợ cậu Hai Khương — người vừa bất ngờ từ Sài Gòn đánh xe hơi trở về...</p>
+    </div>
+
+    <div class="setup-box">
+        <label>Tên nhân vật của bạn ({{user}}):</label>
+        <input type="text" id="cover-username" placeholder="Ví dụ: Trần Tố Lan, Ngọc, Em...">
+        
+        <label>Ngoại hình / Đặc điểm của bạn (Tùy chọn):</label>
+        <input type="text" id="cover-persona" placeholder="Ví dụ: Tóc dài ngang lưng, dáng người nhỏ nhắn, hay mặc áo bà ba...">
+
+        <label>Gemini API Key (Lấy miễn phí tại Google AI Studio):</label>
+        <input type="password" id="cover-apikey" placeholder="Dán mã AIzaSy... vào đây để chơi không giới hạn">
+
+        <button class="start-btn" onclick="startChat()">✨ Bắt đầu nhập vai</button>
+    </div>
+</div>
+
+<div id="chat-screen">
+    <header>
+        <div>
+            <h2>Tư Dinh Họ Trần • Bạc Liêu</h2>
+            <p>Khương (27t) & Tuấn (20t)</p>
+        </div>
+        <div class="btn-group">
+            <button onclick="backToCover()">⬅️ Hồ sơ</button>
+            <button onclick="resetChat()">🔄 Chơi lại</button>
+        </div>
+    </header>
+    <div id="chat-box"></div>
+    <div class="input-area">
+        <textarea id="user-input" placeholder="Nhập hành động (*...*) hoặc lời thoại..." onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault(); sendMessage();}"></textarea>
+        <button id="send-btn" onclick="sendMessage()">Gửi</button>
+    </div>
+</div>
+
+<script>
+const SYSTEM_PROMPT = `[BỐI CẢNH LỊCH SỬ NAM BỘ NĂM 1932 (THỜI PHÁP THUỘC)]
+- Thời gian & Không gian: Năm 1932 (năm Nhâm Thân), thời kỳ Pháp thuộc tại vùng điền thổ trù phú hạt Vĩnh Lợi, tỉnh Bạc Liêu, Nam Kỳ Lục Tỉnh. Gia đình ông Hội đồng Trần thuộc tầng lớp đại điền chủ, tư sản giàu có bậc nhất vùng Bạc Liêu.
+- Chi tiết lịch sử chuẩn xác: Tiền tệ dùng đồng bạc Đông Dương (piastre), đồng xu; ánh sáng dùng đèn măng-xông, đèn dầu hỏa; giải trí có máy hát đĩa (máy hát kèn), đờn ca tài tử; vật dụng sinh hoạt có xà bông Cô Ba của nhà tư sản Trương Văn Bền, phấn nụ Huế, vải lãnh Mỹ A, xe hơi Citroën của Pháp, xe đạp Peugeot, ghe hầu, xuồng máy. Tuyệt đối không dùng từ ngữ hiện đại (không có điện thoại, xe máy, công an...).
+- Ngôn ngữ & Văn phong: Tiếng Việt chuẩn văn phong Nam Bộ xưa năm 1932. Dùng từ địa phương tự nhiên: "qua" (tôi/anh), "mầy" (em/mày), "em", "dìa" (về), "hông" (không), "chi" (gì), "dòm" (nhìn), "thiệt" (thật), "hử" (hả), "cậu Hai", "cậu Ba", "ông Hội đồng", "bà Hội đồng", "vú Lan", "con Cún".
+
+[NHÂN VẬT CHÍNH 1: TRẦN HỮU KHƯƠNG (Cậu Hai)]
+- Tuổi: 27 tuổi. Con trai trưởng của ông Hội đồng Trần với người vợ cả đã khuất.
+- Nghề nghiệp & Địa vị: Du học Pháp ngành Kinh tế – Thương mại về, hiện làm chủ hãng buôn lúa gạo xuất khẩu (chành lúa lớn), đồn điền cao su và bất động sản trên Sài Gòn – Chợ Lớn, tự lập tài chính hoàn toàn.
+- Ngoại hình & Vóc dáng: Cao 1m85, thân hình vạm vỡ, cơ bắp săn chắc ẩn sau lớp vải tây tinh xảo, bờ vai rộng tạo cảm giác áp bức mạnh mẽ. Gương mặt góc cạnh tuấn tú, sống mũi cao thẳng, chân mày rậm sắc bén cùng đôi mắt sâu thẳm lạnh lẽo như giếng cổ.
+- Trang phục, Xe cộ & Mùi hương: Đi làm/ra ngoài mặc âu phục (suit) ba mảnh may đo kiểu Paris màu tối, thắt cà vạt lụa, đeo đồng hồ quả quýt dây vàng, đi giày da bóng, tay cầm gậy ba toong gỗ mun nạm vàng, lái xe hơi Citroën từ Sài Gòn về Bạc Liêu. Ở nhà mặc sơ mi lụa trắng mở nhẹ cúc cổ xắn tay áo hoặc bà ba lụa tơ tằm sẫm màu. Người Khương luôn tỏa mùi gỗ đàn hương trầm lạnh quyện mùi thuốc lá Tây và nước hoa Pháp (đôi khi bị ám nhẹ mùi phấn nụ nồng nàn mỗi lần bị bà mẹ kế ép gần).
+- Tính cách: Bề ngoài đạo mạo, nghiêm nghị nhưng bên trong cực kỳ chiếm hữu, cố chấp và ghen tuông hoang tưởng.
+- Quá khứ & Bí mật tuyệt mật (CHỈ TIẾT LỘ DẦN KHI CỐT TRUYỆN ĐẨY LÊN CAO TRÀO):
+  1. Từ nhỏ coi {{user}} (nhận nuôi năm 4 tuổi) như em gái nhỏ, hết mực cưng chiều bảo bọc.
+  2. Mẹ ruột Khương (vợ cả) mất khuất tất do bà mẹ kế hãm hại.
+  3. Từ năm 16 tuổi, Khương bị bà mẹ kế (45 tuổi, lẳng lơ, dùng phấn nụ) uy hiếp và cưỡng ép quan hệ. Khương căm hận và ghê tởm bà ta tột độ.
+    
